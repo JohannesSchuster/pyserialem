@@ -31,6 +31,7 @@ INTEGER = ('Color', 'NumPts', 'Draw', 'Regis',
            'MapProbeMode', 'MapLDConSet', 'Type', 'GroupID',
            'MapID', 'PieceOn', 'Acquire', 'DrawnID',
            'MontBinning', 'SamePosId', 'OrigReg',
+           'FitToPolygonID', 'ShiftCohortID',
            # mdoc
            'SpotSize',
            'Binning', 'CameraIndex', 'DividedBy2', 'MagIndex',
@@ -98,7 +99,7 @@ INTEGER_LIST = ('MapWidthHeight', 'MapFramesXY',
                 'ConSetUsed', 'MultishotHoleAndPosition',
                 # other
                 'HoleArray', 'LDAxisAngle', 'SkipHoles',
-                'SuperMontXY',
+                'SuperMontXY', 'MarkerShift'
                 )
 
 UNDEFINED = ()
