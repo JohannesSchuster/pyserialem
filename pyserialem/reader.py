@@ -31,13 +31,15 @@ INTEGER = ('Color', 'NumPts', 'Draw', 'Regis',
            'MapProbeMode', 'MapLDConSet', 'Type', 'GroupID',
            'MapID', 'PieceOn', 'Acquire', 'DrawnID',
            'MontBinning', 'SamePosId', 'OrigReg',
-           'FitToPolygonID', 'ShiftCohortID',
+           'FitToPolygonID', 'FitToPolyID', 'ShiftCohortID',
            # mdoc
            'SpotSize',
            'Binning', 'CameraIndex', 'DividedBy2', 'MagIndex',
            'Magnification', 'ProbeMode', 'MoveStage',
            'Alpha', 'ImageSize', 'DataMode', 'Montage',
            'ImageSeries', 'UsingCDS', 'LowDoseConSet', 'NumSubFrames',
+           'OperatingMode', 'RotationAndFlip', 'TimeStamp', 
+           'FlashCounter', 
            # other
            'Corner', 'Imported', 'K2ReadMode', 'MapAlpha',
            'PolyID', 'RealignReg', 'RealignedID', 'RegPt',
@@ -60,6 +62,8 @@ FLOAT = ('MapExposure', 'MapIntensity', 'MapTiltAngle', 'MapSettling',
          'StageZ', 'PixelSpacing', 'Defocus', 'RotationAngle',
          'CountsPerElectron', 'TargetDefocus', 'TiltAngle', 'ExposureTime',
          'DriftSettling', 'Intensity', 'ExposureDose', 'PriorRecordDose',
+         'DoseRate', 'XedgeMaxSD', 'YedgeMaxSD', 'AdjustedRotation',
+         'AdjustedPixelSpacing',
          # other
          'DefocusOffset', 'FocusAxisPos', 'MapSlitWidth',
          # DE-12
@@ -81,6 +85,7 @@ FLOAT_LIST = ('StageXYZ', 'RawStageXY', 'MapScaleMat', 'XYinPc',
               # .mdoc
               'StagePosition', 'MinMaxMean', 'XedgeDxyVS', 'YedgeDxyVS',
               'XedgeDxy', 'YedgeDxy', 'ImageShift', 'BufISXY',
+              'PercentileStats',
               # other
               'BklshXY', 'FocusOffsets', 'LocalErrXY', 'NetViewShiftXY',
               'RealignErrXY', 'ViewBeamShiftXY', 'ViewBeamTiltXY',
@@ -97,6 +102,8 @@ INTEGER_LIST = ('MapWidthHeight', 'MapFramesXY',
                 'AlignedPieceCoords', 'MontBacklash',
                 'ValidBacklash', 'CameraModes', 'FilterState',
                 'ConSetUsed', 'MultishotHoleAndPosition',
+                'UncroppedSize', 'FullMontSize', 
+                'FullMontNumFrames',
                 # other
                 'HoleArray', 'LDAxisAngle', 'SkipHoles',
                 'SuperMontXY', 'MarkerShift'
@@ -645,7 +652,7 @@ def block2dict(block: list, kind: str = None, sequence: int = -1) -> dict:
             elif key in INTEGER_LIST:
                 value = [int(val) for val in value.split()]
             elif key in UNDEFINED:
-                print(item)
+                print('Undefined key:', item)
             else:
                 print('Unknown item:', item)
         except Exception as e:

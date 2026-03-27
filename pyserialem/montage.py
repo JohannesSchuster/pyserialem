@@ -525,7 +525,7 @@ class Montage:
         -------
         Montage object constructed from the given images
         """
-        from pyserialem import read_mdoc_file
+        from ..pyserialem import read_mdoc_file
         filename = str(filename)  # in case of Path object
 
         gm = mrcfile.open(filename)
@@ -1084,6 +1084,7 @@ class Montage:
         stitched = np.zeros((int(stitched_x / binning),
                              int(stitched_y / binning)),
                             dtype=np.float32)
+        
 
         if method in ('average', 'weighted'):
             n_images = np.zeros_like(stitched)
@@ -1200,7 +1201,7 @@ class Montage:
             specified are accessed as a dict of markers
             through `map_item.markers`.
         """
-        from pyserialem import MapItem, write_nav_file
+        from ..pyserialem import MapItem, write_nav_file
 
         stem = fn.rsplit('.', 1)[-1]
         fn_mrc = stem + '.mrc'
